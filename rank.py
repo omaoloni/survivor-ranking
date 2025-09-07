@@ -44,6 +44,7 @@ def get_power_ranking(
     """
     Return a sorted list (desc) of `Players` based on their current score.
     Calculate their `power_ranking` as the difference between their standing in the previous episode and current episode.
+    If `existing_player_standing` is None (i.e. current episode is 1) then power ranking value for all Players is 0.
 
     :param existing_player_standings: is a representation of the standings as of the previous episode
     :param current_player_scores: contains the updated scores for each player as of the current episode
@@ -58,7 +59,11 @@ def get_power_ranking(
 
     for rank, current_player in enumerate(current_player_scores_sorted, start=1):
         player_name = current_player[0]
-        power_ranking = existing_player_standings[player_name] - rank
+        power_ranking = (
+            0
+            if existing_player_standings is None
+            else existing_player_standings[player_name] - rank
+        )
 
         player = Player(player_name, current_player[1], rank, power_ranking)
         players.append(player)
