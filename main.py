@@ -2,6 +2,7 @@ import os
 
 from workbook import get_player_scores
 from rank import get_ranking, get_power_ranking
+from pretty_print import print_power_ranking
 
 
 # TODO add README explaining the expected format of the Excel sheet
@@ -34,7 +35,7 @@ def main(episode_no: int, working_directory: str) -> None:
         prev_round_rankings, curr_episode_player_scores
     )
 
-    print(curr_round_power_rankings)
+    print_power_ranking(curr_round_power_rankings)
 
 
 if __name__ == "__main__":
