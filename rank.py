@@ -33,7 +33,6 @@ def get_ranking(players: list[tuple[str, str]]) -> dict[str, str]:
         player[0]: rank for rank, player in enumerate(sorted_players, start=1)
     }
 
-    print(player_rankings)
     return player_rankings
 
 
@@ -51,7 +50,7 @@ def get_power_ranking(
 
     :Example:
     >>> get_power_ranking({'Buffy': '1', 'Hermione': '2', 'Olivia': '3'}, [('Olivia', 25), ('Buffy', 28), ('Hermione', '22')])
-    [1. Buffy-28 (0), 2. Olivia-25 (+1), 3. Hermione-22 (-1)]
+    [1. Buffy-28 (+0), 2. Olivia-25 (+1), 3. Hermione-22 (-1)]
     """
     current_player_scores_sorted = get_sorted_player_list(current_player_scores, True)
 
@@ -65,7 +64,11 @@ def get_power_ranking(
             else existing_player_standings[player_name] - rank
         )
 
-        player = Player(player_name, current_player[1], rank, power_ranking)
+        power_ranking_str = (
+            "+" + str(power_ranking) if power_ranking >= 0 else str(power_ranking)
+        )
+
+        player = Player(player_name, current_player[1], rank, power_ranking_str)
         players.append(player)
 
     return players

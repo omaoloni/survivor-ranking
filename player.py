@@ -15,16 +15,16 @@ class Player:
         self.rank = rank
         self.power_rank = power_rank
 
-    def __str__(self) -> str:
+    def __str__(self):
         """
         Returns a "pretty" string representation of the Player
         """
-        return f"{self.rank}. {self.name}-{self.score} ({self.power_rank})\n"
+        return f"{self.rank}. {self.name}-{self.score} ({self.power_rank})"
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         """
         Returns a "pretty" string representation of the Player
         """
         # TODO fix this overriding
         # return f'Player(\'{self.name}\', {self.score}, \'{self.rank}\', \'{self.power_rank}\')'
-        return f"{self.rank}. {self.name}-{self.score} ({self.power_rank})\n"
+        return f"{self.rank}. {self.name}-{self.score} ({self.power_rank})"

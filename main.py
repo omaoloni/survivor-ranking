@@ -21,16 +21,12 @@ def main(episode_no: int, working_directory: str) -> None:
         )
 
     curr_episode_player_scores = get_player_scores(episode_no, working_directory)
-    # print("Current episode scores")
-    # print(curr_episode_player_scores)
 
     prev_round_rankings = None
     if episode_no > 1:
         prev_episode_player_scores = get_player_scores(
             episode_no - 1, working_directory
         )
-        # print("Prev episode scores")
-        # print(prev_episode_player_scores)
 
         prev_round_rankings = get_ranking(prev_episode_player_scores)
 
