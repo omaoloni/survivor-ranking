@@ -16,7 +16,6 @@ def get_sorted_player_list(
     return sorted(players, key=lambda x: x[1], reverse=sort_descending)
 
 
-# TODO what about when there's a tie? Currently orders alphabetically instead of giving same score
 def get_ranking(players: list[tuple[str, str]]) -> dict[str, str]:
     """
     Return a dict of {'player_name' : 'ranking'}

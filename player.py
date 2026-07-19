@@ -25,6 +25,4 @@ class Player:
         """
         Returns a "pretty" string representation of the Player
         """
-        # TODO fix this overriding
-        # return f'Player(\'{self.name}\', {self.score}, \'{self.rank}\', \'{self.power_rank}\')'
         return f"{self.rank}. {self.name}-{self.score} ({self.power_rank})"

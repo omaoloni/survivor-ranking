@@ -5,7 +5,6 @@ from rank import get_ranking, get_power_ranking
 from pretty_print import print_power_ranking
 
 
-# TODO add README explaining the expected format of the Excel sheet
 def main(episode_no: int, working_directory: str) -> None:
     """
     A script that generates an updated Survivor power ranking.
@@ -39,4 +38,5 @@ def main(episode_no: int, working_directory: str) -> None:
 
 
 if __name__ == "__main__":
-    main(3, os.getcwd())
+    # Update first parameter to the current episode number
+    main(2, os.getcwd())
