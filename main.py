@@ -1,6 +1,5 @@
 import os
-
-from workbook import get_player_scores
+from workbook import populate_scores, get_player_scores
 from rank import get_ranking, get_power_ranking
 from pretty_print import print_power_ranking
 
@@ -19,6 +18,8 @@ def main(episode_no: int, working_directory: str) -> None:
         raise TypeError(
             "'episode_no' must be a whole number between 1 and 13 (inclusive)"
         )
+
+    # populate_scores(episode_no, working_directory)
 
     curr_episode_player_scores = get_player_scores(episode_no, working_directory)
 

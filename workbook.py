@@ -3,6 +3,55 @@ import openpyxl
 import constants
 
 
+def populate_scores(episode_no: int, working_directory: str) -> None:
+    """
+    Populate scores for workbook sheet corresponding to "Episode `episode_no`" based on the scores
+    in workbook sheet `
+
+    Constestant Scores
+
+    Player Picks
+
+    Requirement on ordering of contestant names
+
+    :param episode_no: Description
+    :type episode_no: int
+    :param working_directory: Description
+    :type working_directory: str
+    """
+
+    workbook = openpyxl.load_workbook(
+        get_workbook_filepath(working_directory), data_only=False
+    )
+
+    results_filename = "Fantasy Tribe " + str(episode_no) + "-updated.xlsx"
+    worksheet_episode_name = constants.WORKBOOK_SHEET_NAME_PREFIX + str(episode_no)
+
+    worksheet_scores = workbook["Player Scores"]
+    worksheet_selections = workbook["Selections"]
+    worksheet_episode_results = workbook[worksheet_episode_name]
+
+    # TODO confirm last row index inclusive or not
+    # TODO pull the upper bound to Constants (depending on the season, there's a varied number of castaways)
+    for i in range(2, 6):
+        castaway_score_for_ep = worksheet_scores.cell(
+            row=i, column=episode_no + 1
+        ).value
+        print(castaway_score_for_ep)
+
+        # castaway_row = worksheet_episode_results[i]
+
+        # TODO pull the upper bound to Constants (depending on the season, there's a varied number of Players)
+        # maybe there's a way to dynamically determine it (we did it for the "Read" portion)
+        for j in range(2, 6):
+            if worksheet_selections.cell(row=i, column=j).value == "Y":
+                worksheet_episode_results.cell(row=i, column=j).value = (
+                    castaway_score_for_ep
+                )
+
+    workbook.save(results_filename)
+
+
 def get_player_scores(episode_no: int, working_directory: str) -> list[tuple[str, str]]:
     """
     Read episode data from the Excel sheet in `working_directory` corresponding to `episode_no` and
