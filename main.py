@@ -1,11 +1,9 @@
 import os
-
 from workbook import populate_scores, get_player_scores
 from rank import get_ranking, get_power_ranking
 from pretty_print import print_power_ranking
 
 
-# TODO add README explaining the expected format of the Excel sheet
 def main(episode_no: int, working_directory: str) -> None:
     """
     A script that generates an updated Survivor power ranking.
@@ -21,7 +19,7 @@ def main(episode_no: int, working_directory: str) -> None:
             "'episode_no' must be a whole number between 1 and 13 (inclusive)"
         )
 
-    populate_scores(episode_no, working_directory)
+    # populate_scores(episode_no, working_directory)
 
     curr_episode_player_scores = get_player_scores(episode_no, working_directory)
 
@@ -41,4 +39,5 @@ def main(episode_no: int, working_directory: str) -> None:
 
 
 if __name__ == "__main__":
-    main(1, os.getcwd())
+    # Update first parameter to the current episode number
+    main(2, os.getcwd())

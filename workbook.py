@@ -75,7 +75,14 @@ def get_player_scores(episode_no: int, working_directory: str) -> list[tuple[str
     worksheet = workbook[constants.WORKBOOK_SHEET_NAME_PREFIX + str(episode_no)]
 
     names = get_row_data(worksheet, 1)
-    final_scores = get_row_data(worksheet, 20 if episode_no == 1 else 22)
+    final_scores = get_row_data(
+        worksheet,
+        (
+            constants.WORKBOOK_FIRST_EPISODE_ROW_COUNT
+            if episode_no == 1
+            else constants.WORKBOOK_SUBSEQUENT_EPISODE_ROW_COUNT
+        ),
+    )
 
     player_scores = list(zip(names, final_scores))
 
